@@ -39,4 +39,4 @@ $dbh->query($sql);
 echo "<hr><div style='text-align:center;'>";
 echo "Powered by " . gethostname();
 echo "</div>";
-echo "alternative 4";
+echo "alternative 5";
