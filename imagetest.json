@@ -1,1 +1,6 @@
-[{"name":"web","imageUri":"702071808398.dkr.ecr.eu-west-1.amazonaws.com/docker-ecs:latest"}]
+[
+    {
+        "name":"web",
+        "imageUri":"702071808398.dkr.ecr.eu-west-1.amazonaws.com/docker-ecs:latest"
+    }
+]
