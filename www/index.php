@@ -7,6 +7,13 @@ $port = $_ENV["PORT"] ?? 3306;
 $pw = $_ENV["PW"];
 $user = $_ENV["USER"];
 $db = $_ENV["DB"];
+$memcachedServiceDiscovery = $_ENV["MEMCACHED"];
+if (isset($memcachedServiceDiscovery)) {
+    $result = dns_get_record($memcachedServiceDiscovery, DNS_SRV);
+    print_r($result);
+    // $memcacheD = new Memcached();
+    // $memcacheD->addServers($servers);
+}
 
 $dsn = "mysql:dbname=$db;host=$host;port=$port";
 
