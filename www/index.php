@@ -7,12 +7,29 @@ $port = $_ENV["PORT"] ?? 3306;
 $pw = $_ENV["PW"];
 $user = $_ENV["USER"];
 $db = $_ENV["DB"];
+
+$memcacheD = new Memcached();
 $memcachedServiceDiscovery = $_ENV["MEMCACHED"];
 if (isset($memcachedServiceDiscovery)) {
     $result = dns_get_record($memcachedServiceDiscovery, DNS_SRV);
-    print_r($result);
-    // $memcacheD = new Memcached();
-    // $memcacheD->addServers($servers);
+    $servers = [];
+
+    if ($result) {
+        foreach ($result as $server) {
+            $servers[] = [
+                $server['target'],
+                $server['port'],
+            ];
+        }
+        
+        $memcacheD->addServers($servers);
+    }
+}
+
+if( $memcacheD->add("mystr","this is a memcache test!",10)){
+    echo  'one';
+}else{
+    echo 'two: '.$mem->get("mystr");
 }
 
 $dsn = "mysql:dbname=$db;host=$host;port=$port";
