@@ -29,7 +29,7 @@ if (isset($memcachedServiceDiscovery)) {
 if( $memcacheD->add("mystr","this is a memcache test!",10)){
     echo  'one';
 }else{
-    echo 'two: '.$mem->get("mystr");
+    echo 'two: '.$memcacheD->get("mystr");
 }
 
 $dsn = "mysql:dbname=$db;host=$host;port=$port";
